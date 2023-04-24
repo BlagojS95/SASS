@@ -1,0 +1,30 @@
+@use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mix;
+@use "sass:math";
+
+footer {
+  margin-top: (var.$gutter-base * 5);
+  span {
+    font-weight: var.$font-weight-bold;
+  }
+
+  padding-left: var.$gutter-base;
+  position: fixed;
+  width: 15%;
+  left: 15px;
+  bottom: 200px;
+
+  @include mix.laptop-l-styles {
+    bottom: 100px;
+    width: 20%;
+    padding-left: (var.$gutter-base * 1.5);
+  }
+
+  @include mix.laptop-m-styles {
+    width: 30%;
+  }
+
+  @include mix.tablet-styles {
+    display: none;
+  }
+}

@@ -1,0 +1,72 @@
+@use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mix;
+@use "sass:math";
+
+.text-box {
+  @extend %section;
+  position: fixed;
+  width: 15%;
+  @include mix.laptop-l-styles {
+    width: 20%;
+  }
+
+  @include mix.laptop-m-styles {
+    width: 30%;
+  }
+
+  @include mix.tablet-styles {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    img {
+      width: 30%;
+      display: inline-block;
+      @include mix.mobile-l-styles {
+        width: 50%;
+      }
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      .logo-box {
+        padding-top: 5px;
+        flex-basis: 50%;
+      }
+      .hamburger-menu {
+        flex-basis: 50%;
+      }
+    }
+  }
+
+  nav {
+    margin-top: (var.$gutter-base * 2);
+    @include mix.tablet-styles {
+      display: none;
+    }
+  }
+
+  ul {
+    padding-left: math.div(var.$gutter-base, 30);
+  }
+  li {
+    list-style: none;
+    line-height: (var.$gutter-base * 1.2);
+
+    a {
+      text-decoration: none;
+      color: var.$text-color-base;
+    }
+  }
+  .hamburger-menu {
+    display: none;
+    @include mix.tablet-styles {
+      display: inline-block;
+      text-align: right;
+      color: gray;
+      .fa-solid {
+        border: 1px solid grey;
+        padding: 5px;
+      }
+    }
+  }
+}
